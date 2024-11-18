@@ -54,7 +54,7 @@ logic.py
 1. **Clone the Repository**
 
    ```sh
-   git clone https://github.com/yourusername/sudoku-solver.git
+   git clone https://github.com/cakeru/sudoku-solver.git
    cd sudoku-solver
    ```
 
