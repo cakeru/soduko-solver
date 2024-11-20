@@ -3,10 +3,10 @@
 def find_empty(board):
     """
     Find an empty cell in the Sudoku board.
-    
+
     Args:
         board (list of list of int): The Sudoku board.
-        
+
     Returns:
         tuple: (row, col) of the empty cell, or None if the board is full.
     """
@@ -16,15 +16,16 @@ def find_empty(board):
                 return (i, j)
     return None
 
+
 def is_valid(board, num, pos):
     """
     Check if placing a number at a given position is valid.
-    
+
     Args:
         board (list of list of int): The Sudoku board.
         num (int): The number to place.
         pos (tuple): (row, col) position.
-        
+
     Returns:
         bool: True if valid, False otherwise.
     """
@@ -51,10 +52,11 @@ def is_valid(board, num, pos):
 
     return True
 
+
 def solve_generator(board):
     """
     Generator-based Sudoku solver using backtracking.
-    
+
     Yields:
         list of list of int: The board state after each number placement or removal.
     """

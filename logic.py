@@ -1,41 +1,7 @@
 # logic.py
-
 import random
 import copy
-from solver import solve_generator
-
-def find_empty(board):
-    """Find an empty cell in the Sudoku board."""
-    for i in range(9):
-        for j in range(9):
-            if board[i][j] == 0:
-                return (i, j)
-    return None
-
-def is_valid(board, num, pos):
-    """Check if placing a number at a given position is valid."""
-    row, col = pos
-
-    # Check row
-    for j in range(9):
-        if board[row][j] == num and j != col:
-            return False
-
-    # Check column
-    for i in range(9):
-        if board[i][col] == num and i != row:
-            return False
-
-    # Check box
-    box_x = col // 3
-    box_y = row // 3
-
-    for i in range(box_y * 3, box_y * 3 + 3):
-        for j in range(box_x * 3, box_x * 3 + 3):
-            if board[i][j] == num and (i, j) != pos:
-                return False
-
-    return True
+from solver import solve_generator, find_empty, is_valid
 
 def generate_full_board():
     """Generate a complete and valid Sudoku board."""
@@ -106,7 +72,7 @@ def generate_puzzle(board, difficulty=40):
                 attempts = 0  # Reset attempts after a successful removal
 
     if cells_removed < difficulty:
-        print("Unable to generate a puzzle with the desired difficulty. Try reducing the difficulty.")
+        raise ValueError("Unable to generate a puzzle with the desired difficulty. Try reducing the difficulty.")
     else:
         print(f"Puzzle generated with {cells_removed} cells removed.")
     return puzzle
